@@ -1,7 +1,7 @@
-const faker = require('faker')
-const express = require('express')
+const faker = require('faker');
+const express = require('express');
 
-const app = express()
+const app = express();
 
 const user = () => ({
   name: faker.name.firstName(),
@@ -10,14 +10,18 @@ const user = () => ({
   gender: faker.name.gender(),
   jobType: faker.name.jobType(),
   jobTitle: faker.name.jobTitle(),
-})
+});
 
 app.get('/', function (req, res) {
   let data = [];
-  for(let i = faker.datatype.number({min: 20, max: 150}); i > 0; i--) {
-    data.push(user())
+  for (let i = faker.datatype.number({ min: 20, max: 150 }); i > 0; i--) {
+    data.push(user());
   }
-  res.json(data)
-})
+  res.json(data);
+});
 
-app.listen(3000)
+const port = process.env.PORT || 80;
+
+app.listen(port, () => {
+  console.log('🚀 Server on port ' + port);
+});
