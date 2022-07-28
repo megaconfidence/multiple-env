@@ -6,7 +6,7 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-let activeEnv = 'user';
+let activeEnv = 'me-user';
 
 app.get('/', function (req, res) {
   res.json({activeEnv})
